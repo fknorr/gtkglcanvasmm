@@ -1,6 +1,6 @@
 # Copyright (c) 2016, Fabian Knorr
 #
-# This file is part of gtkglcanvas.
+# This file is part of gtkglcanvasmm.
 #
 # gtkglcanvasmm is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published

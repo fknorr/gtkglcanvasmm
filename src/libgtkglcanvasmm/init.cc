@@ -16,4 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-int main() {}
+#include <gtkglmm/init.h>
+#include <gtkglmm/canvas.h>
+#include <gtkglmm/private/canvas_p.h>
+
+#include <gtkgl/canvas.h>
+
+
+void
+GtkGL::init() {
+    // Map gtypes to gtkmm wrapper-creation functions:
+    Glib::wrap_register(gtk_gl_canvas_get_type(), &Canvas_Class::wrap_new);
+
+    // Register the gtkmm gtypes:
+    Canvas::get_type();
+}

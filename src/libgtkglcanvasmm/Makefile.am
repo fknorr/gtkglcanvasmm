@@ -21,7 +21,8 @@ lib_LTLIBRARIES =  \
 
 __top_builddir__libgtkglcanvasmm_la_SOURCES = \
 	visual.cc \
-	canvas.cc
+	canvas.cc \
+    init.cc
 
 gtkglmmdir = $(includedir)/gtkglmm
 gtkglmm_HEADERS = \
