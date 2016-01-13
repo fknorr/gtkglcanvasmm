@@ -20,8 +20,20 @@
 #include <gtkglmm/canvas.h>
 #include <gtkglmm/private/canvas_p.h>
 
+
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+#pragma GCC diagnostic ignored "-Wsuggest-override"
+#endif
+
 #include <gtkmm/private/widget_p.h>
 #include <gtkgl/canvas.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 
 using namespace GtkGL;
 
@@ -29,7 +41,7 @@ using namespace GtkGL;
 Glib::RefPtr<Canvas>
 Glib::wrap(GtkGLCanvas* object, bool take_copy) {
     return Glib::RefPtr<Canvas>(
-        dynamic_cast<Canvas*> (Glib::wrap_auto((GObject*)(object), take_copy)));
+        dynamic_cast<Canvas*> (Glib::wrap_auto(reinterpret_cast<GObject*>(object), take_copy)));
 }
 
 
@@ -56,7 +68,7 @@ Canvas_Class::class_init_function(void* g_class, void* class_data) {
 
 Glib::ObjectBase *
 Canvas_Class::wrap_new(GObject* object) {
-    return new Canvas((GtkGLCanvas*)object);
+    return new Canvas(reinterpret_cast<GtkGLCanvas*>(object));
 }
 
 
@@ -73,7 +85,7 @@ Canvas::Canvas(const Glib::ConstructParams& construct_params)
 
 
 Canvas::Canvas(GtkGLCanvas* castitem)
-    : Gtk::Widget((GtkWidget*)(castitem)){
+    : Gtk::Widget(reinterpret_cast<GtkWidget*>(castitem)){
 }
 
 

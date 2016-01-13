@@ -19,10 +19,22 @@
 
 #pragma once
 
-#include <glibmm/ustring.h>
 #include <sigc++/sigc++.h>
+
+
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+#pragma GCC diagnostic ignored "-Wsuggest-override"
+#endif
+
 #include <glibmm.h>
 #include <gtkmm/widget.h>
+#include <glibmm/ustring.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
 
 
 // GTK_GL_TYPE_CANVAS is defined in C GtkGLCanvas library header

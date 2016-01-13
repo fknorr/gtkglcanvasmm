@@ -1,7 +1,18 @@
 #pragma once
 
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+#pragma GCC diagnostic ignored "-Wsuggest-override"
+#endif
+
 #include <glibmm/private/object_p.h>
 #include <glibmm/class.h>
+
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
+
 
 
 namespace GtkGL {
