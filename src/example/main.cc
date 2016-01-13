@@ -1,4 +1,5 @@
-/* Copyright (c) 2016 Fabian Knorr <fbknorr@gmail.com>
+/**
+ * Copyright (c) 2016 Fabian Knorr <fbknorr@gmail.com>
  *
  * This file is part of gtkglcanvasmm.
  *
@@ -16,4 +17,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-int main() {}
+
+#include "main_window.hh"
+#include "filter_dialog.hh"
+
+#include <gtkglmm/init.h>
+
+
+int
+main(int argc, char **argv) {
+    Glib::init();
+    GtkGL::init();
+
+    auto application = Gtk::Application::create(argc, argv,
+            "com.github.fknorr.gtkglcanvasmm.example");
+
+    GtkGLExample::MainWindow main_window;
+    return application->run(main_window);
+}

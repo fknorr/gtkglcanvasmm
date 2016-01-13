@@ -19,22 +19,16 @@
 check_PROGRAMS = $(top_builddir)/example
 
 __top_builddir__example_SOURCES = \
-	main.cc
+	main.cc \
+    main_window.cc \
+    filter_dialog.cc
 
 __top_builddir__example_LDADD = \
 	$(top_builddir)/libgtkglcanvasmm.la \
+	$(GLIBMM_LIBS) \
 	$(GTKMM3_LIBS)
 
 __top_builddir__example_CPPFLAGS = \
 	-I$(top_srcdir)/include \
+    $(GLIBMM_CFLAGS) \
     $(GTKMM3_CFLAGS)
-
-if PLATFORM_WIN32
-__top_builddir__example_LDFLAGS = \
-	-Wl,--export-all-symbols
-# FreeType missing symbols workaround
-__top_builddir__example_LDADD += -lbz2
-else
-__top_builddir__example_CFLAGS = \
-	-rdynamic
-endif

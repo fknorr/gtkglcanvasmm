@@ -59,6 +59,7 @@ public:
     typedef GtkGLCanvas BaseObjectType;
     typedef GtkGLCanvasClass BaseClassType;
 
+    Canvas();
     Canvas(const Canvas&) = delete;
     Canvas& operator=(const Canvas&) = delete;
 
@@ -95,10 +96,8 @@ private:
     static CppClassType canvas_class_;
 
 protected:
-    Canvas();
     explicit Canvas(const Glib::ConstructParams& construct_params);
     explicit Canvas(GtkGLCanvas* castitem);
-
 };
 
 

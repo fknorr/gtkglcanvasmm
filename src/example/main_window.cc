@@ -18,16 +18,25 @@
  */
 
 
-#version 130
+#include "main_window.hh"
 
-uniform mat4 projection;
-uniform mat4 modelview;
-in vec2 pos;
-in vec3 color;
+using namespace GtkGLExample;
 
-out vec3 var_color;
 
-void main() {
-    var_color = color;
-    gl_Position = projection * modelview * vec4(pos, 0, 1);
+static Gtk::Window
+get_window_widget(Gtk::Builder &builder) {
+    Gtk::Window *gtk_window;
+    builder.get_widget("window", gtk_window);
+    return std::move(*gtk_window);
+}
+
+
+MainWindow::MainWindow(Gtk::Builder &builder)
+    : Gtk::Window(get_window_widget(builder)) {
+    builder.get_widget("canvas", canvas);
+}
+
+
+MainWindow::MainWindow()
+    : MainWindow(*Gtk::Builder::create_from_file("res/example/example.ui").operator->()) {
 }

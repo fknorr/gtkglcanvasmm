@@ -11,7 +11,7 @@ AM_PROG_AR
 LT_INIT([])
 AC_PROG_CXX
 
-AX_CXX_COMPILE_STDCXX_14([], [mandatory])
+AX_CXX_COMPILE_STDCXX_11([], [mandatory])
 
 AC_CANONICAL_HOST
 case $host_os in

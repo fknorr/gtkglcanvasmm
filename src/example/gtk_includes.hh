@@ -18,16 +18,19 @@
  */
 
 
-#version 130
+#pragma once
 
-uniform mat4 projection;
-uniform mat4 modelview;
-in vec2 pos;
-in vec3 color;
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+#pragma GCC diagnostic ignored "-Wsuggest-override"
+#endif
 
-out vec3 var_color;
+#include <gtkmm/widget.h>
+#include <gtkmm/window.h>
+#include <gtkmm/application.h>
+#include <gtkmm/builder.h>
 
-void main() {
-    var_color = color;
-    gl_Position = projection * modelview * vec4(pos, 0, 1);
-}
+#ifdef __GNUC__
+#pragma GCC diagnostic pop
+#endif
