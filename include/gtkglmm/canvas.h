@@ -25,8 +25,11 @@
 #include <gtkmm/widget.h>
 
 
+// GTK_GL_TYPE_CANVAS is defined in C GtkGLCanvas library header
+#ifndef GTK_GL_TYPE_CANVAS
 typedef struct _GtkGLCanvas GtkGLCanvas;
 typedef struct _GtkGLCanvasClass GtkGLCanvasClass;
+#endif
 
 
 namespace GtkGL {

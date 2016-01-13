@@ -9,7 +9,7 @@ namespace GtkGL {
 }
 
 
-class GtkGL::Canvas_class : public Glib::Class {
+class GtkGL::Canvas_Class : public Glib::Class {
 public:
     typedef Canvas CppObjectType;
     typedef GtkGLCanvas BaseObjectType;

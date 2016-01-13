@@ -31,7 +31,7 @@ gtkglmm_HEADERS = \
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gtkglcanvasmm.pc
 
-__top_builddir__libgtkglcanvasmm_la_CFLAGS = \
+__top_builddir__libgtkglcanvasmm_la_CPPFLAGS = \
     -I$(top_srcdir)/include \
 	$(GLIBMM_CFLAGS) \
 	$(GTKMM3_CFLAGS) \
