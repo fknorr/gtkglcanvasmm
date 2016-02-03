@@ -17,6 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#define GTKGLCANVASMM_IMPLEMENTATION
 #include <gtkglmm/canvas.h>
 #include <gtkglmm/private/canvas_p.h>
 
@@ -119,4 +120,64 @@ Canvas::Canvas()
     // Mark this class as non-derived to allow C++ vfuncs to be skipped.
     : Glib::ObjectBase(0),
     Gtk::Widget(Glib::ConstructParams(canvas_class_.init())) {
+}
+
+
+
+VisualList
+Canvas::enumerate_visuals() {
+    return VisualList(gtk_gl_canvas_enumerate_visuals(gobj()));
+}
+
+
+bool
+Canvas::create_context(const Visual &visual) {
+    return static_cast<bool>(gtk_gl_canvas_create_context(gobj(), &visual));
+}
+
+
+bool
+Canvas::create_context(const Visual &visual, unsigned ver_major, unsigned ver_minor,
+        Profile profile) {
+    return static_cast<bool>(gtk_gl_canvas_create_context_with_version(gobj(), &visual,
+            ver_minor, ver_major, static_cast<GtkGLProfile>(profile)));
+}
+
+
+bool
+Canvas::auto_create_contex(std::vector<Requirement> requirements) {
+    requirements.push_back(GTK_GL_LIST_END);
+    return static_cast<bool>(gtk_gl_canvas_auto_create_context(gobj(), requirements.data()));
+}
+
+
+bool
+Canvas::auto_create_contex(std::vector<Requirement> requirements, unsigned ver_major,
+        unsigned ver_minor, Profile profile) {
+    requirements.push_back(GTK_GL_LIST_END);
+    return static_cast<bool>(gtk_gl_canvas_auto_create_context_with_version(gobj(),
+            requirements.data(), ver_minor, ver_major, static_cast<GtkGLProfile>(profile)));
+}
+
+
+void
+Canvas::destroy_context() {
+    gtk_gl_canvas_destroy_context(gobj());
+}
+
+
+bool
+Canvas::has_context() const {
+    return static_cast<bool>(gtk_gl_canvas_has_context(gobj()));
+}
+
+
+void Canvas::make_current() {
+    gtk_gl_canvas_make_current(gobj());
+}
+
+
+void
+Canvas::display_frame() {
+    gtk_gl_canvas_display_frame(gobj());
 }

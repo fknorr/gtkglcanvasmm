@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include "visual.h"
+
 #include <sigc++/sigc++.h>
 
 
@@ -47,9 +49,17 @@ typedef struct _GtkGLCanvasClass GtkGLCanvasClass;
 namespace GtkGL {
     class Canvas_Class;
     class Canvas;
+    enum Profile: int;
 
     void wrap_init();
 }
+
+
+enum GtkGL::Profile: int {
+    CORE_PROFILE,
+    COMPATIBILITY_PROFILE,
+    ES_PROFILE
+};
 
 
 class GtkGL::Canvas : public Gtk::Widget {
@@ -78,7 +88,7 @@ public:
     /**
      * Provides access to the underlying C GObject.
      */
-    GtkGLCanvas*       gobj()       { return reinterpret_cast<GtkGLCanvas*>(gobject_); }
+    GtkGLCanvas *gobj() { return reinterpret_cast<GtkGLCanvas*>(gobject_); }
 
     /**
      * Provides access to the underlying C GObject.
@@ -90,6 +100,26 @@ public:
      * Use when directly setting fields in structs.
      */
     GtkGLCanvas* gobj_copy();
+
+    VisualList enumerate_visuals();
+
+    bool create_context(const Visual &visual);
+
+    bool create_context(const Visual &visual, unsigned ver_major, unsigned ver_minor,
+            Profile profile);
+
+    bool auto_create_contex(std::vector<Requirement> requirements);
+
+    bool auto_create_contex(std::vector<Requirement> requirements, unsigned ver_major,
+            unsigned ver_minor, Profile profile);
+
+    void destroy_context();
+
+    bool has_context() const;
+
+    void make_current();
+
+    void display_frame();
 
 private:
     friend class Canvas_Class;

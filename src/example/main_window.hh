@@ -22,6 +22,7 @@
 
 #include "gtk_includes.hh"
 #include <gtkglmm/canvas.h>
+#include <GL/gl.h>
 
 
 namespace GtkGLExample {
@@ -36,5 +37,29 @@ public:
 private:
     MainWindow(Gtk::Builder &builder);
 
+    // Widgets as fetched from the Gtk::Builder
     GtkGL::Canvas *canvas;
+    Gtk::Label *context_info_label, *mouse_info_label;
+    Gtk::Button *create_button, *destroy_button, *start_button, *stop_button;
+
+    // Whether the animation is running
+    bool running;
+    // The current object rotation
+    float angle;
+
+    // Drawing modes supported by the active context
+    // direct_mode: Drawing a triangle with glBegin() / glEnd()
+    // shaders: Drawing a rectangle with shaders and VBOs
+    // vaos: Drawing a hexagon with shaders, VBOs and Vertex Array Objects
+    gboolean has_direct_mode, has_shaders, has_vaos;
+
+    // The shader program used by draw_with_shaders() and draw_with_vaos()
+    GLuint program;
+    // Buffers for draw_with_shaders()
+    GLuint rect_vertex_buffer, rect_index_buffer;
+    // Buffers for draw_with_vaos()
+    GLuint hex_vertex_buffer, hex_index_buffer, hex_vao;
+    // Uniform / attribute locations in "program"
+    GLuint projection_loc, modelview_loc, pos_loc, color_loc;
 };
+

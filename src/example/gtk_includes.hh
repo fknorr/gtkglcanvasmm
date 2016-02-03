@@ -30,6 +30,8 @@
 #include <gtkmm/window.h>
 #include <gtkmm/application.h>
 #include <gtkmm/builder.h>
+#include <gtkmm/button.h>
+#include <gtkmm/label.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
