@@ -22,7 +22,7 @@
 
 #include "gtk_includes.hh"
 #include <gtkglmm/canvas.h>
-#include <GL/gl.h>
+#include <GL/glew.h>
 
 
 namespace GtkGLExample {
@@ -68,6 +68,9 @@ private:
     void stop_animation();
     void draw();
     void mouse_leave();
-    void mouse_move();
+    void mouse_move(int x, int y);
+
+    void message_box(Gtk::MessageType type, const Glib::ustring &text);
+    void update_context_info();
 };
 

@@ -108,9 +108,9 @@ public:
     bool create_context(const Visual &visual, unsigned ver_major, unsigned ver_minor,
             Profile profile);
 
-    bool auto_create_contex(std::vector<Requirement> requirements);
+    bool auto_create_context(std::vector<Requirement> requirements = {});
 
-    bool auto_create_contex(std::vector<Requirement> requirements, unsigned ver_major,
+    bool auto_create_context(std::vector<Requirement> requirements, unsigned ver_major,
             unsigned ver_minor, Profile profile);
 
     void destroy_context();

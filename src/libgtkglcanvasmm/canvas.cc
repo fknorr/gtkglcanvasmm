@@ -145,18 +145,20 @@ Canvas::create_context(const Visual &visual, unsigned ver_major, unsigned ver_mi
 
 
 bool
-Canvas::auto_create_contex(std::vector<Requirement> requirements) {
-    requirements.push_back(GTK_GL_LIST_END);
-    return static_cast<bool>(gtk_gl_canvas_auto_create_context(gobj(), requirements.data()));
+Canvas::auto_create_context(std::vector<Requirement> requirements) {
+    requirements.push_back({ GtkGL::NONE, GtkGL::EXACTLY, 0 });
+    return static_cast<bool>(gtk_gl_canvas_auto_create_context(gobj(),
+            reinterpret_cast<GtkGLRequirement*>(requirements.data())));
 }
 
 
 bool
-Canvas::auto_create_contex(std::vector<Requirement> requirements, unsigned ver_major,
+Canvas::auto_create_context(std::vector<Requirement> requirements, unsigned ver_major,
         unsigned ver_minor, Profile profile) {
-    requirements.push_back(GTK_GL_LIST_END);
+    requirements.push_back({ GtkGL::NONE, GtkGL::EXACTLY, 0 });
     return static_cast<bool>(gtk_gl_canvas_auto_create_context_with_version(gobj(),
-            requirements.data(), ver_minor, ver_major, static_cast<GtkGLProfile>(profile)));
+            reinterpret_cast<GtkGLRequirement*>(requirements.data()), ver_minor, ver_major,
+            static_cast<GtkGLProfile>(profile)));
 }
 
 

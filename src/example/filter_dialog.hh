@@ -22,5 +22,5 @@
 
 #include "gtk_includes.hh"
 
-namespace GtkGLExample {
-}
+
+

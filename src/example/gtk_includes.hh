@@ -33,6 +33,7 @@
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
 #include <gtkmm/label.h>
+#include <gtkmm/messagedialog.h>
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop

@@ -71,7 +71,8 @@ VisualList::end() const noexcept {
 
 
 VisualList
-VisualList::choose(std::vector<GtkGLRequirement> requirements) const {
-    requirements.push_back(GTK_GL_LIST_END);
-    return VisualList(gtk_gl_choose_visuals(list.get(), requirements.data()));
+VisualList::choose(std::vector<GtkGL::Requirement> requirements) const {
+    requirements.push_back({ GtkGL::NONE, GtkGL::EXACTLY, 0 });
+    return VisualList(gtk_gl_choose_visuals(list.get(), reinterpret_cast<GtkGLRequirement*>(
+            requirements.data())));
 }

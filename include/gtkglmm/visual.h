@@ -55,13 +55,12 @@ namespace GtkGL {
     class VisualList;
 
     using BitSet = unsigned;
+    struct Requirement;
 
 #ifndef GTKGLCANVASMM_IMPLEMENTATION
     struct FramebufferConfig;
-    struct Requirement;
 #else
     using FramebufferConfig = _GtkGLFramebufferConfig;
-    using Requirement = _GtkGLRequirement;
 #endif
 
 }
@@ -221,6 +220,8 @@ public:
     Caveat caveat;
 };
 
+#endif
+
 
 struct GtkGL::Requirement {
     Attribute attr;
@@ -228,4 +229,3 @@ struct GtkGL::Requirement {
     gint value;
 };
 
-#endif
