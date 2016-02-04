@@ -38,9 +38,9 @@ private:
     MainWindow(Gtk::Builder &builder);
 
     // Widgets as fetched from the Gtk::Builder
-    GtkGL::Canvas *canvas;
-    Gtk::Label *context_info_label, *mouse_info_label;
-    Gtk::Button *create_button, *destroy_button, *start_button, *stop_button;
+    GtkGL::Canvas &canvas;
+    Gtk::Label &context_info_label, &mouse_info_label;
+    Gtk::Button &create_button, &destroy_button, &start_button, &stop_button;
 
     // Whether the animation is running
     bool running;
@@ -61,5 +61,13 @@ private:
     GLuint hex_vertex_buffer, hex_index_buffer, hex_vao;
     // Uniform / attribute locations in "program"
     GLuint projection_loc, modelview_loc, pos_loc, color_loc;
+
+    void create_context();
+    void destroy_context();
+    void start_animation();
+    void stop_animation();
+    void draw();
+    void mouse_leave();
+    void mouse_move();
 };
 

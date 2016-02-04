@@ -33,5 +33,10 @@ main(int argc, char **argv) {
             "com.github.fknorr.gtkglcanvasmm.example");
 
     GtkGLExample::MainWindow main_window;
+    main_window.signal_delete_event().connect([&](GdkEventAny *) {
+        application->quit();
+        return false;
+    });
+
     return application->run(main_window);
 }

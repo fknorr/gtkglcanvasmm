@@ -26,6 +26,7 @@
 #pragma GCC diagnostic ignored "-Wsuggest-override"
 #endif
 
+#include <gtkmm/main.h>
 #include <gtkmm/widget.h>
 #include <gtkmm/window.h>
 #include <gtkmm/application.h>
