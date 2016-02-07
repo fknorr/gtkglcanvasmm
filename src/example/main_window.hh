@@ -22,7 +22,7 @@
 
 #include "gtk_includes.hh"
 #include <gtkglmm/canvas.h>
-#include <GL/glew.h>
+#include <epoxy/gl.h>
 
 
 namespace GtkGLExample {
@@ -73,4 +73,3 @@ private:
     void message_box(Gtk::MessageType type, const Glib::ustring &text);
     void update_context_info();
 };
-

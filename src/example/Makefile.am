@@ -26,9 +26,11 @@ __top_builddir__example_SOURCES = \
 __top_builddir__example_LDADD = \
 	$(top_builddir)/libgtkglcanvasmm.la \
 	$(GLIBMM_LIBS) \
-	$(GTKMM3_LIBS)
+	$(GTKMM3_LIBS) \
+    $(Epoxy_LIBS)
 
 __top_builddir__example_CPPFLAGS = \
 	-I$(top_srcdir)/include \
     $(GLIBMM_CFLAGS) \
-    $(GTKMM3_CFLAGS)
+    $(GTKMM3_CFLAGS) \
+    $(Epoxy_CFLAGS)

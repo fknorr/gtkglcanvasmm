@@ -42,3 +42,6 @@ __top_builddir__libgtkglcanvasmm_la_LIBADD = \
     $(GLIBMM_LIBS) \
     $(GTKMM3_LIBSS) \
     $(GtkGLCanvas_LIBS)
+
+__top_builddir__libgtkglcanvasmm_la_LDFLAGS = \
+    $(VERSION_INFO)

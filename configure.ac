@@ -44,10 +44,13 @@ PKG_CHECK_MODULES([GTKMM3], [gtkmm-3.0], [],
     [AC_MSG_ERROR([Missing dependency: gtkmm 3.0])])
 PKG_CHECK_MODULES([GtkGLCanvas], [gtkglcanvas], [],
     [AC_MSG_ERROR([Missing dependency: GtkGLCanvas (Download from http://github.com/fknorr/gtkglcanvas)])])
+PKG_CHECK_MODULES([Epoxy], [epoxy], [],
+    [AC_MSG_ERROR([Missing dependency: Epoxy])])
 
 AC_SUBST([AM_CPPFLAGS], [$cppflags])
 AC_SUBST([AM_CFLAGS], [$cflags])
 AC_SUBST([AM_CXXFLAGS], [$cxxflags])
+AC_SUBST(VERSION_INFO, "-version-info 1:1:0")
 
 if test "x$prefix" = "xNONE" ; then
     prefix="/usr/local"
