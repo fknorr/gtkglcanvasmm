@@ -25,4 +25,4 @@ Name: gtkglcanvasmm
 Description: GTK+ 3.0 OpenGL widget library, C++/gtkmm binding
 Version: @PACKAGE_VERSION@
 Libs: -L${libdir} -lgtkglcanvasmm
-Cflags: -I${includedir}
+Cflags: -I${includedir}/gtkglcanvasmm

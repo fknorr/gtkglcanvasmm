@@ -27,7 +27,13 @@ __top_builddir__libgtkglcanvasmm_la_SOURCES = \
 gtkglmmdir = $(includedir)/gtkglmm
 gtkglmm_HEADERS = \
     $(top_srcdir)/include/gtkglmm/canvas.h \
-    $(top_srcdir)/include/gtkglmm/visual.h
+    $(top_srcdir)/include/gtkglmm/visual.h \
+    $(top_srcdir)/include/gtkglmm/init.h \
+    $(top_srcdir)/include/gtkglmm/gtkglmm.h
+
+gtkglmmprivatedir = $(includedir)/gtkglmm/private
+gtkglmmprivate_HEADERS = \
+    $(top_srcdir)/include/gtkglmm/private/canvas_p.h
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gtkglcanvasmm.pc
